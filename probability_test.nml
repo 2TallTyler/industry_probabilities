@@ -1,0 +1,64 @@
+grf {
+	grfid: "TEST";
+	name: string(STR_GRF_NAME);
+	desc: string(STR_GRF_DESC);
+	version: 0;
+	min_compatible_version: 0;
+}
+
+/* Disable base game industries */
+disable_item(FEAT_INDUSTRIES, 0, 36);
+
+cargotable {
+	COAL
+}
+
+spritelayout sprlay_coal_pile 
+{
+	ground		{sprite:2022;}
+	building	{sprite:2025;}
+}
+
+item (FEAT_INDUSTRYTILES, ind_tile_coal_pile) 
+{
+	property {
+		substitute:	02;
+	}
+	graphics {
+	default: sprlay_coal_pile;
+	}
+}
+
+tilelayout industry_layout_coal_pile {
+	0,0:	ind_tile_coal_pile;
+}
+
+/* Identical industries except for how the probability is set */
+item (FEAT_INDUSTRIES, industry_coal_pile_property, 1) {
+	property {
+		substitute: INDUSTRYTYPE_COAL_MINE;
+		life_type: IND_LIFE_TYPE_EXTRACTIVE;
+		cargo_types: [ produce_cargo("COAL",15), ];
+		name: string(STR_PILE_PROPERTY);
+		fund_cost_multiplier:	100;
+		layouts:				[ industry_layout_coal_pile, ];
+				
+		prob_map_gen: 1;
+		prob_random: 1;
+	}
+}
+
+item (FEAT_INDUSTRIES, industry_coal_pile_callback, 2) {
+	property {
+		substitute: INDUSTRYTYPE_COAL_MINE;
+		life_type: IND_LIFE_TYPE_EXTRACTIVE;
+		cargo_types: [ produce_cargo("COAL",15), ];
+		name: string(STR_PILE_CALLBACK);
+		fund_cost_multiplier:	100;
+		layouts:				[ industry_layout_coal_pile, ];
+		}
+		
+	graphics {
+		construction_probability:	1;
+	}
+}

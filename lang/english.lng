@@ -1,0 +1,7 @@
+##grflangid 0x01
+
+STR_GRF_NAME				:Probability Test
+STR_GRF_DESC				:A test GRF to demonstrate that industry probability differs between property and callback.
+
+STR_PILE_PROPERTY			:Coal Pile - Property
+STR_PILE_CALLBACK			:Coal Pile - Callback
