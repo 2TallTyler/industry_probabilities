@@ -44,7 +44,7 @@ item (FEAT_INDUSTRIES, industry_coal_pile_property, 1) {
 		layouts:				[ industry_layout_coal_pile, ];
 				
 		prob_map_gen: 1;
-		prob_random: 1;
+		prob_in_game: 1;
 	}
 }
 
